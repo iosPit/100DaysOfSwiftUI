@@ -1,5 +1,5 @@
 # 100DaysOfSwiftUI
-Code written for Paul Hudson's SwiftUI Course [100 Days of Swift UI](https://www.hackingwithswift.com/100/swiftui)
+Code and projects for Paul Hudson's SwiftUI Course [100 Days of Swift UI](https://www.hackingwithswift.com/100/swiftui)
 ## Swift Fundamentals
 Covers fundamentals of language including:
 * constants/variables
