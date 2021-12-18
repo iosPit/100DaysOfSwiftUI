@@ -17,6 +17,8 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    @State private var score = 0
+    
     var body: some View {
         NavigationView {
             List {
@@ -24,9 +26,10 @@ struct ContentView: View {
                     TextField("What is your word?", text: $newWord)
                         .onSubmit(addNewWord)
                         .autocapitalization(.none)
-                    
                 }
-                
+                Section {
+                    Text("Current Score: \(score)")
+                }
                 
                 Section {
                     ForEach(usedWords, id: \.self) { word in
@@ -39,13 +42,17 @@ struct ContentView: View {
             }
             .navigationTitle(rootWord)
             .onAppear(perform: startGame)
+            
             .alert(errorTitle, isPresented: $showingError) {
                 Button("OK", role: .cancel) {}
             } message: {
                 Text(errorMessage)
             }
+            
+            .toolbar {
+                Button("Reset Game", action: startGame)
+            }
         }
-        
     }
     
     func startGame() {
@@ -68,30 +75,34 @@ struct ContentView: View {
         fatalError("Could not load start.txt from bundle.")
     }
     
+    
     func addNewWord() {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-        guard answer.count > 0 else { return }
+        
+        guard answer.count > 2 else {
+            wordError(title: "Too Short", message: "Choose a word that is 3 or more letters")
+            return
+        }
         
         guard isOriginal(word: answer) else {
-            wordError(title: "Word already used", message: "Be more original")
+            wordError(title: "Already Used", message: "Be more original")
             return
         }
         
         guard isPossible(word: answer) else {
-            wordError(title: "Word not possible", message: "You can't spell \(answer) from \(rootWord)")
+            wordError(title: "Not Possible", message: "You can't spell \(answer) from \(rootWord)")
             return
         }
         
         guard isReal(word: answer) else {
-            wordError(title: "Word not real", message: "Stop making things up")
+            wordError(title: "Not a Word", message: "Stop making things up")
             return
         }
         
-        
-        withAnimation {
-            usedWords.insert(answer, at: 0)
-        }
+        withAnimation { usedWords.insert(answer, at: 0) }
         newWord = ""
+        
+        score += answer.count
     }
     
     func isOriginal(word: String) -> Bool {
