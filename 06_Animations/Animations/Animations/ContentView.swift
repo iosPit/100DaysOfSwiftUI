@@ -11,9 +11,43 @@ struct ContentView: View {
     @State private var animationAmount = 1.0
     @State private var animationAmount2 = 2.0
     @State private var rotationAnimation = 0.0
+    @State private var dragAmount = CGSize.zero
+    
+    let animationCharacters = Array("Snake Animation")
+    @State private var isEnabled = false
+    @State private var dragAmount2 = CGSize.zero
     
     var body: some View {
         VStack {
+            HStack {
+                ForEach(0..<animationCharacters.count) { number in
+                    Text("\(String(animationCharacters[number]))")
+                        .padding(5)
+                        .font(.title)
+                        .background(isEnabled ? .blue : .red)
+                        .offset(dragAmount2)
+                        .animation(.default.delay(Double(number)/20), value: dragAmount2)
+                
+                }
+                
+            }
+            .gesture(
+            DragGesture()
+                .onChanged { dragAmount2 = $0.translation }
+                .onEnded({_ in dragAmount = .zero
+                    isEnabled.toggle()
+                })
+            )
+            
+            LinearGradient(colors: [.yellow, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
+                .frame(width: 300, height: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .offset(dragAmount)
+                .gesture(
+                DragGesture()
+                    .onChanged { dragAmount = $0.translation }
+                    .onEnded { _ in dragAmount = .zero }
+                )
             
             Stepper("Scale amount", value: $animationAmount2.animation(), in: 1...10)
             Spacer()
