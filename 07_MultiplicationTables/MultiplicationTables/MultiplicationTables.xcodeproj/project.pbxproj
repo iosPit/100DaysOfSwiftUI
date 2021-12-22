@@ -11,6 +11,7 @@
 		DB1E50972772348E00F0B0E5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1E50962772348E00F0B0E5 /* ContentView.swift */; };
 		DB1E50992772348F00F0B0E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB1E50982772348F00F0B0E5 /* Assets.xcassets */; };
 		DB1E509C2772348F00F0B0E5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB1E509B2772348F00F0B0E5 /* Preview Assets.xcassets */; };
+		DB1E50A327724A7900F0B0E5 /* DifficultyButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1E50A227724A7900F0B0E5 /* DifficultyButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		DB1E50962772348E00F0B0E5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DB1E50982772348F00F0B0E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB1E509B2772348F00F0B0E5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DB1E50A227724A7900F0B0E5 /* DifficultyButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultyButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				DB1E50942772348D00F0B0E5 /* MultiplicationTablesApp.swift */,
 				DB1E50962772348E00F0B0E5 /* ContentView.swift */,
+				DB1E50A227724A7900F0B0E5 /* DifficultyButtons.swift */,
 				DB1E50982772348F00F0B0E5 /* Assets.xcassets */,
 				DB1E509A2772348F00F0B0E5 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB1E50A327724A7900F0B0E5 /* DifficultyButtons.swift in Sources */,
 				DB1E50972772348E00F0B0E5 /* ContentView.swift in Sources */,
 				DB1E50952772348D00F0B0E5 /* MultiplicationTablesApp.swift in Sources */,
 			);
